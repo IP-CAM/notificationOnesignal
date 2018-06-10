@@ -1,9 +1,9 @@
 <modification>
 
     <id>Notification onesignal</id>
-    <version>2.2.0</version>
+    <version>1.0.0</version>
     <vqmver>2.1.1</vqmver>
-    <author>PHP0</author>
+    <author>BasheirHassan</author>
 
 
     <file name="admin/view/template/catalog/product_list.twig">
