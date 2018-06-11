@@ -210,7 +210,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
         curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json; charset=utf-8',
-            "Authorization: Basic ".$setting['notificationonesignal_app_id']
+            "Authorization: Basic ".$setting['notificationonesignal_api_key']
         ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
