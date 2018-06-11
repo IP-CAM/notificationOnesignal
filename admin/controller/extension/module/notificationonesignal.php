@@ -110,8 +110,8 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 
 
     public function uninstall() {
-        $this->load->model('setting/event');
-        $this->model_setting_event->deleteEventByCode('notificationonesignal');
+        $this->load->model('setting/setting');
+        $this->model_setting_setting->deleteSetting('Notificationonesignal');
     }
 
 
@@ -131,22 +131,16 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
      */
     public function send(){
 
+
+
         $id = $_GET['id'];
         $msg = $_GET['msg'];
         $response = $this->sendMessage($id,$msg);
         $return["allresponses"] = $response;
         $return = json_encode($return);
-
         $data = json_decode($response, true);
-        print_r($data);
-        $id = $data['id'];
-        print_r($id);
 
-        print("\n\nJSON received:\n");
-        print($return);
-        print("\n");
-
-
+        echo $response;
 
     }
 
@@ -197,7 +191,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
             'included_segments' => array(
                 'Active Users'
             ),
-//            'include_player_ids' => array("c432e10e-b414-43ea-b51f-387f5b943ad1"),
+//            'include_player_ids' => array("c432e10e-b414-43ea-b51f-"),
 
             'data' => array(
                 "p" => $id
@@ -209,14 +203,14 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
         );
 
         $fields = json_encode($fields);
-        print("\nJSON sent:\n");
-        print($fields);
+//        print("\nJSON sent:\n");
+//        print($fields);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json; charset=utf-8',
-            "Authorization: Basic $setting[notificationonesignal_app_id]"
+            "Authorization: Basic ".$setting['notificationonesignal_app_id']
         ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
