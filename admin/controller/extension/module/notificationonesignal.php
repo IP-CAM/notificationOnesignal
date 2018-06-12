@@ -147,7 +147,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
  public function getProduct(){
 
      global $loader, $registry;
-     $id = $_GET['id'];
+     $id = (int) $_GET['id'];
      $loader->model('catalog/product');
      $model = $registry->get('model_catalog_product');
      $result = $model->getProduct($id);
