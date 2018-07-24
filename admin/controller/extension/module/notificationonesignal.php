@@ -147,7 +147,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
  public function getProduct(){
 
      global $loader, $registry;
-     $id = (int) $_GET['id'];
+     $id = $_GET['id'];
      $loader->model('catalog/product');
      $model = $registry->get('model_catalog_product');
      $result = $model->getProduct($id);
@@ -171,6 +171,8 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 
 
 
+
+
         $nameProduct = $_GET["name"];
         $ImageUrl = $_GET["imgUrl"];
         $id = $_GET["id"];
@@ -189,9 +191,9 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
         $fields = array(
             'app_id' => $setting['notificationonesignal_app_id'],
             'included_segments' => array(
-                'Active Users'
+                'All'
             ),
-//            'include_player_ids' => array("c432e10e-b414-43ea-b51f-"),
+          // 'include_player_ids' => array("c432e10e-b414-43ea-b51f-387f5b943ad1"),
 
             'data' => array(
                 "p" => $id
@@ -199,6 +201,10 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
             'ios_attachments' => array(
                 'id' => $ImageUrl,
             ),
+						'ios_badgeType'	=>	'Increase',
+						'ios_badgeCount'	=>	'1',
+						
+						'chrome_web_image' => $ImageUrl,
             'contents' => $content
         );
 
