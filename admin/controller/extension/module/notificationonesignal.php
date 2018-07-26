@@ -176,14 +176,12 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
         $nameProduct = $_GET["name"];
         $ImageUrl = $_GET["imgUrl"];
         $id = $_GET["id"];
-				$sound = $_GET['sound'];
-
 
 				if ($_GET['sound'] == "true"){
 					$sound = "nil";
 				}
 				else {
-					$sound = ""
+					$sound = "";
 				}
 
 
@@ -204,7 +202,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
             'included_segments' => array(
                 'All'
             ),
-          // 'include_player_ids' => array("c432e10e-b414-43ea-b51f-387f5b943ad1"),
+          // 'include_player_ids' => array("f773099b-cdc3-46fb-b27a-"),
 
             'data' => array(
                 "p" => $id
@@ -216,7 +214,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 						'ios_badgeCount'	=>	'1',
 						"url"	=>	$productUrl,
 						'chrome_web_image' => $ImageUrl,
-						"ios_sound": $sound,
+						"ios_sound" => $sound,
             'contents' => $content
         );
 
