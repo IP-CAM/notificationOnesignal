@@ -176,7 +176,18 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
         $nameProduct = $_GET["name"];
         $ImageUrl = $_GET["imgUrl"];
         $id = $_GET["id"];
+				$sound = $_GET['sound'];
 
+
+				if ($_GET['sound'] == "true"){
+					$sound = "nil";
+				}
+				else {
+					$sound = ""
+				}
+
+
+				$productUrl = "https://4techs.net/index.php?route=product/product&product_id=$id";
 
         $content      = array(
             "en" => $nameProduct,
@@ -203,8 +214,9 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
             ),
 						'ios_badgeType'	=>	'Increase',
 						'ios_badgeCount'	=>	'1',
-						
+						"url"	=>	$productUrl,
 						'chrome_web_image' => $ImageUrl,
+						"ios_sound": $sound,
             'contents' => $content
         );
 
