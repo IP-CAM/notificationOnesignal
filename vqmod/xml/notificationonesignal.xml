@@ -36,7 +36,9 @@
 
     var dialog = bootbox.dialog({
         title: 'ارسال اشعار ',
-        message: ' <i id ="loading" class="fa fa-spin fa-spinner"></i>  <br/><input id="text" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="imgUrl" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="ID" class="bootbox-input bootbox-input-email form-control"  type="text">',
+        message: ' <i id ="loading" class="fa fa-spin fa-spinner"></i>  <br/><input id="text" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="imgUrl" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="ID" class="bootbox-input bootbox-input-email form-control"  type="text"> <br/> <input type="checkbox" name="sound" id="sound" value="true">ارسال التنبيه بدون صوت <br>',
+
+
         buttons: {
             cancel: {
                 label: "الغاء",
@@ -51,7 +53,15 @@
                 callback: function(){
 
 
-                    $.getJSON( "index.php?route=extension/module/notificationonesignal/send&user_token={{user_token}}", { name: $("#text").val(), imgUrl: $("#imgUrl").val(), id: $("#ID").val() } )
+                var sound = "false"
+                if($("#sound").is(':checked')){
+                sound = "true"
+                }
+
+
+
+
+                    $.getJSON( "index.php?route=extension/module/notificationonesignal/send&user_token={{user_token}}", { name: $("#text").val(), imgUrl: $("#imgUrl").val(), id: $("#ID").val() ,sound:sound} )
                       .done(function( data ) {
 
                       if (data.errors){
