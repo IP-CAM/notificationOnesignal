@@ -197,7 +197,6 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 
 
 				$productUrl = $this->url->link('product/product', 'product_id=' . $id);
-//				$productUrl = "https://4techs.net/index.php?route=product/product&product_id=$id";
 
         $content      = array(
             "en" => $nameProduct,
