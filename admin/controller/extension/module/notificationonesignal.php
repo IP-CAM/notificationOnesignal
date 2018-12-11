@@ -154,7 +154,18 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 
 
      $nameProduct = $result["name"];
-     $nameImage = 'https://'.$_SERVER['HTTP_HOST'].'/image/'.$result["image"];
+//     $nameImage = 'https://'.$_SERVER['HTTP_HOST'].'/image/'.$result["image"];
+//	 echo  $this->config->get('config_url') . 'image/' . $result['image'];
+	
+	 if (defined("HTTP_IMAGE")) {
+		 $nameImage =  HTTP_IMAGE . 'image/';
+	 } elseif ($this->config->get('config_url')) {
+		 $nameImage = $this->config->get('config_url') . 'image/';
+	 } else {
+		 $nameImage = HTTP_CATALOG . 'image/';
+	 }
+	 $nameImage .= $result['image'];
+	 
      echo json_encode(array('text'=>$nameProduct,'imgUrl'=>$nameImage,'ID'=>$id));
 
 
@@ -185,7 +196,8 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller {
 				}
 
 
-				$productUrl = "https://4techs.net/index.php?route=product/product&product_id=$id";
+				$productUrl = $this->url->link('product/product', 'product_id=' . $id);
+//				$productUrl = "https://4techs.net/index.php?route=product/product&product_id=$id";
 
         $content      = array(
             "en" => $nameProduct,
