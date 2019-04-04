@@ -43,3 +43,10 @@ $_['entry_add_customer_name'] = 'Add user name to alert';
 $_['error_permission'] = 'Warning: You do not have permission to modify Notification Onesignal module!';
 $_['error_sent_notfction'] = 'Can not send an alert - please check the settings';
 $_['error_no_key'] = 'You did not enter - BOT_TOKEN';
+
+
+$_['text_row_id'] = 'ID';
+$_['text_row_name'] = 'Name';
+
+
+$_['text_input_segment'] = 'Add Segment';

@@ -38,48 +38,98 @@
                     <div class="form-group">
 
 
-                        <div class="input-group col-lg-5">
-                            <span class="input-group-addon" id="basic-addon1">APP ID</span>
-                            <input type="text" name="notificationonesignal_app_id" id="notificationonesignal_app_id"
-                                   value="{{ notificationonesignal_app_id }}" placeholder="APP ID"
-                                   class="form-control"/>
-                            <span class="input-group-btn"><button class="btn btn-info " type="button"><i
-                                            class="fa fa-bookmark"></i></button> </span>
-                        </div>
+                        <div class="container">
 
-                        <br>
+                            <div class="container form-group">
+                                <div class="row">
 
-                        <div class="input-group col-lg-5">
-                            <span class="input-group-addon" id="basic-addon1">API KEY</span>
-                            <input type="text" name="notificationonesignal_api_key" id="notificationonesignal_api_key"
-                                   value="{{ notificationonesignal_api_key }}" placeholder="API KEY"
-                                   class="form-control"/>
-                            <span class="input-group-btn"><button class="btn btn-info " type="button"><i
-                                            class="fa fa-bookmark"></i></button> </span>
-                        </div>
 
-                        <br>
+                                    <div class="col-md-6 ">
+                                        <div class="row" id="groubChatID">
+                                            <div class="input-group col-md-12">
+                                                <span class="input-group-addon" id="basic-addon1">{{ text_input_segment }}</span>
+                                                <input type="text" name="notificationonesignal_text_name_segment"
+                                                       id="notificationonesignal_text_name_segment"
+                                                       value="" placeholder="{{ text_input_store }}"
+                                                       class="form-control"/>
+                                                <span class="input-group-btn"><button id="add_segment" class="btn btn-info " type="button"><i
+                                                                class="fa fa-address-card"></i></button> </span>
+                                            </div>
+                                            <br>
 
-                        <div class="input-group col-lg-5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <select name="notificationonesignal_status" id="notificationonesignal_status"
-                                    class="form-control">
-                                {% if notificationonesignal_status %}
-                                    <option value="1" selected>{{ text_enabled }}</option>
-                                    <option value="0">{{ text_disabled }}</option>
-                                {% else %}
-                                    <option value="1">{{ text_enabled }}</option>
-                                    <option value="0" selected>{{ text_disabled }}</option>
+                            <div class="container form-group">
+                            <table id="dateSegment" class="table table-bordered table-hover" style="width:40%">
+                                <tr>
+                                    <th>{{ text_row_id }}</th>
+                                    <th>{{ text_row_name }}</th>
+                                </tr>
+
+
+
+
+                                {% for key,value in notificationonesignal_name_segment %}
+                                    <tr>
+                                        <td><input type="text" name="notificationonesignal_name_segment[]"  value="{{ value }}"  class="form-control"></td>
+                                        <td><button onclick="deleteSegment(this)" type="button" class="btn btn-danger Del" aria-label="Left Align"><span class="fa fa-trash-o" aria-hidden="true"></span></button></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+
+                            <div>
+
+
+
+
+                            <div class="input-group col-lg-5 form-group">
+                                <span class="input-group-addon" id="basic-addon1">APP ID</span>
+                                <input type="text" name="notificationonesignal_app_id" id="notificationonesignal_app_id"
+                                       value="{{ notificationonesignal_app_id }}" placeholder="APP ID"
+                                       class="form-control"/>
+                                <span class="input-group-btn"><button class="btn btn-info " type="button"><i
+                                                class="fa fa-bookmark"></i></button> </span>
+                            </div>
+
+
+
+
+                            <div class="input-group col-lg-5 form-group">
+                                <span class="input-group-addon" id="basic-addon1">API KEY</span>
+                                <input type="text" name="notificationonesignal_api_key" id="notificationonesignal_api_key"
+                                       value="{{ notificationonesignal_api_key }}" placeholder="API KEY"
+                                       class="form-control"/>
+                                <span class="input-group-btn"><button class="btn btn-info " type="button"><i
+                                                class="fa fa-bookmark"></i></button> </span>
+                            </div>
+
+
+
+                            <div class="input-group col-lg-5 form-group">
+
+                                <select name="notificationonesignal_status" id="notificationonesignal_status"
+                                        class="form-control">
+                                    {% if notificationonesignal_status %}
+                                        <option value="1" selected>{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                    {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected>{{ text_disabled }}</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+
+
+                            <div class="col-sm-10">
+                                {% if error_code %}
+                                    <div class="text-danger">{{ error_code }}</div>
                                 {% endif %}
-                            </select>
-                        </div>
+                            </div>
 
-                        <br>
 
-                        <div class="col-sm-10">
-                            {% if error_code %}
-                                <div class="text-danger">{{ error_code }}</div>
-                            {% endif %}
                         </div>
 
 
@@ -87,5 +137,61 @@
 
                 </form>
             </div>
+
+
+
+
+
+            <script type="text/javascript">
+
+
+
+                $(document).ready(function () {
+
+
+                    $("#add_segment").click(function () {
+
+                        var val = $('#notificationonesignal_text_name_segment').val();
+
+
+                        if (val == "") {
+
+                            alert('is Empty');
+                            return false;
+                        }
+
+                        $("#dateSegment").find('tbody')
+                            .append($('<tr>')
+                                .append($('<td>').html('<input type="text" name="notificationonesignal_name_segment[]"  value="' + val + '"  class="form-control">'))
+                                .append($('<td>').html(' <td><button onclick="deleteSegment(this)" type="button" class="btn btn-danger Del" aria-label="Left Align"><span class="fa fa-trash-o" aria-hidden="true"></span></button></td>\n'))
+                            );
+
+
+                        $('#notificationonesignal_text_name_segment').val('');
+                    });
+
+
+
+
+                });
+
+
+
+                function deleteSegment(id) {
+                    $(id).closest('tr').fadeOut( "slow", function() {
+
+                        $(id).closest('tr').remove();
+                    });
+
+                }
+
+
+
+
+
+
+
+
+            </script>
 
 {{ footer }}

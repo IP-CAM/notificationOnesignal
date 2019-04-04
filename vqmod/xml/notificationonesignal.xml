@@ -1,7 +1,7 @@
 <modification>
 
     <id>Notification onesignal</id>
-    <version>1.0.1</version>
+    <version>1.2.0</version>
     <vqmver>2.1.1</vqmver>
     <author>BasheirHassan</author>
 
@@ -32,57 +32,68 @@
 
             <script type="text/javascript">
 
-    function sendAllNotificationonesignal() {
+function sendAllNotificationonesignal() {
 
     var dialog = bootbox.dialog({
         title: 'ارسال اشعار ',
-        message: ' <i id ="loading" class="fa fa-spin fa-spinner"></i>  <br/><input id="text" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="imgUrl" class="bootbox-input bootbox-input-email form-control"  type="text"><br/><input id="ID" class="bootbox-input bootbox-input-email form-control"  type="text"> <br/> <input type="checkbox" name="sound" id="sound" value="true">ارسال التنبيه بدون صوت <br>',
-
+        message: ' <i id ="loading" class="fa fa-spin fa-spinner"></i> ' +
+            ' <br/><input id="text" class="bootbox-input bootbox-input-email form-control"  type="text"><br/>' +
+            '<input id="imgUrl" class="bootbox-input bootbox-input-email form-control"  type="text"><br/>' +
+            '<input id="ID" class="bootbox-input bootbox-input-email form-control"  type="text"> <br/>' +
+            '<select name="segment" id="segment"></select> اختيار المجموعة <br/>' +
+            '<input type="checkbox" name="sound" id="sound" value="true">ارسال التنبيه بدون صوت <br>' +
+            '<input type="checkbox" name="active_url" id="active_url" value="true" >تفعيل رابط المنتج<br>',
 
         buttons: {
             cancel: {
                 label: "الغاء",
                 className: 'btn-danger',
-                callback: function(){
+                callback: function () {
 
                 }
             },
             ok: {
                 label: "ارسال",
                 className: 'btn-info',
-                callback: function(){
+                callback: function () {
 
 
-                var sound = "false"
-                if($("#sound").is(':checked')){
-                sound = "true"
-                }
+                    var sound = "false"
+                    if ($("#sound").is(':checked')) {
+                        sound = "true"
+                    }
+
+                    var active_url = ""
+                    if ($("#active_url").is(':checked')) {
+                        active_url = "true"
+                    }
 
 
+                    $.getJSON("index.php?route=extension/module/notificationonesignal/send&user_token={{user_token}}", {
+                        name: $("#text").val(),
+                        imgUrl: $("#imgUrl").val(),
+                        id: $("#ID").val(),
+                        segment: $("#segment").val(),
+                        active_url: active_url,
+                        sound: sound
+                    })
+                        .done(function (data) {
 
+                            if (data.errors) {
+                                bootbox.alert(" " + data.errors);
+                            } else {
+                                bootbox.alert("حالة الارسال" + data.recipients);
 
-                    $.getJSON( "index.php?route=extension/module/notificationonesignal/send&user_token={{user_token}}", { name: $("#text").val(), imgUrl: $("#imgUrl").val(), id: $("#ID").val() ,sound:sound} )
-                      .done(function( data ) {
+                            }
 
-                      if (data.errors){
-                      bootbox.alert( " " +data.errors);
-                      }
-
-                      else {
-                      bootbox.alert("حالة الارسال" + data.recipients);
-
-                      }
-
-                      });
+                        });
                     return false;
-
 
 
                 }
             }
         }
     });
-
 
 
     var obj = $("input[name='selected[]']:checked:enabled");
@@ -97,6 +108,13 @@
             $("#text").val(data.text);
             $("#imgUrl").val(data.imgUrl);
             $("#ID").val(data.ID);
+
+
+            $.each(data.segment, function (key, val) {
+                $("#segment").append('<option value="' + val + '">' + val + '</option>');
+
+            });
+
         }
 
     });
@@ -104,9 +122,7 @@
 
 }
 
-
-
-             </script>
+</script>
 
 			]]></add>
 
