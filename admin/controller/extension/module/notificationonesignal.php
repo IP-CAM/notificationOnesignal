@@ -184,13 +184,9 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
             $sound = "";
         }
 
-        if ($_GET['active_url'] == "true") {
-            $active_url = "nil";
-        } else {
-            $active_url = "";
-        }
+     
 
-        $productUrl = $this->url->link('product/product', 'product_id='.$id);
+        $productUrl = HTTPS_CATALOG."/index.php?route=product/product&product_id=$id";
 
         $content = [
             "en" => $nameProduct,
