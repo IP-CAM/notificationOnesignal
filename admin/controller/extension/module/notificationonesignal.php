@@ -134,7 +134,11 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
         $model = $registry->get('model_catalog_product');
         $result = $model->getProduct($id);
 
-        $nameProduct = $result["name"];
+        $price =  floor($result['price']);
+
+        //print_r($result);
+
+        $nameProduct = $result["name"].' - '.$price .' ريال ';
         //     $nameImage = 'https://'.$_SERVER['HTTP_HOST'].'/image/'.$result["image"];
         //	 echo  $this->config->get('config_url') . 'image/' . $result['image'];
 
@@ -184,7 +188,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
             $sound = "";
         }
 
-     
+
 
         $productUrl = HTTPS_CATALOG."/index.php?route=product/product&product_id=$id";
 
