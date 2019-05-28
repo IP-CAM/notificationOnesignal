@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa59b4ff-a1fd-46f4-b853-43dd9129fd24" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/admin/controller/extension/module/notificationonesignal.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/controller/extension/module/notificationonesignal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/language/ar/extension/module/notificationonesignal.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/language/ar/extension/module/notificationonesignal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/language/en-gb/extension/module/notificationonesignal.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/language/en-gb/extension/module/notificationonesignal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view/template/extension/module/notificationonesignal.twig" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/template/extension/module/notificationonesignal.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vqmod/xml/notificationonesignal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vqmod/xml/notificationonesignal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +20,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/notificationonesignal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3495">
-              <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
+            <state relative-caret-position="90">
+              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file:///Volumes/Program/Git Terminal/git">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -48,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vqmod/xml/notificationonesignal.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -93,6 +98,7 @@
         <option value="$PROJECT_DIR$/admin/language/ar/extension/module/notificationonesignal.php" />
         <option value="$PROJECT_DIR$/admin/language/en-gb/extension/module/notificationonesignal.php" />
         <option value="$PROJECT_DIR$/vqmod/xml/notificationonesignal.xml" />
+        <option value="/Volumes/Program/Git Terminal/git" />
       </list>
     </option>
   </component>
@@ -258,6 +264,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -287,18 +294,17 @@
       <updated>1558907259950</updated>
       <workItem from="1558907265481" duration="2560000" />
       <workItem from="1558910085923" duration="4616000" />
-      <workItem from="1559079986075" duration="1157000" />
+      <workItem from="1559079986075" duration="1389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8333000" />
+    <option name="totallyTimeSpent" value="8565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="13" y="23" width="1920" height="937" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16197917" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16197917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -312,7 +318,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="File Transfer" order="9" weight="0.3290993" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3290993" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3290993" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.3295063" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -345,13 +351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/notificationonesignal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3495">
-          <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/language/ar/extension/module/notificationonesignal.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -370,6 +369,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/notificationonesignal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Program/Git Terminal/git">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-end-line="17" />
         </state>
       </provider>
     </entry>
