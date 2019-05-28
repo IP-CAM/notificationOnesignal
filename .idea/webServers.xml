@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="010058b5-3960-4052-92d8-083f9a1520fe" name="Local4techs" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="/Applications/MAMP/htdocs/4techs" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

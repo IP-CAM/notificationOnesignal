@@ -114,10 +114,7 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
     public function send()
     {
 
-
-        $id = $_GET['id'];
-        $msg = $_GET['msg'];
-        $response = $this->sendMessage($id, $msg);
+        $response = $this->sendMessage();
         $return["allresponses"] = $response;
         $return = json_encode($return);
         $data = json_decode($response, true);
@@ -125,7 +122,35 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
         echo $response;
     }
 
-    public function getProduct()
+
+  /**
+   * get All cat
+   */
+
+  public function getSection(){
+
+    $this->load->model("catalog/category");
+    $categories = $this->model_catalog_category->getCategories(0);
+    echo json_encode($categories);
+
+  }
+
+
+  /**
+   * get  Manufacturers
+   */
+
+public function getManufacturers(){
+
+  $this->load->model('catalog/manufacturer');
+  $manufacturers = $this->model_catalog_manufacturer->getManufacturers();
+    echo json_encode($manufacturers);
+
+  }
+
+
+
+  public function getProduct()
     {
 
         global $loader, $registry;
@@ -162,6 +187,11 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
             ]);
     }
 
+
+
+
+
+
     public function getSegment()
     {
 
@@ -171,8 +201,50 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
         return $setting['notificationonesignal_name_segment'];
     }
 
-    function sendMessage()
-    {
+    function sendMessage(){
+
+
+
+
+// ارسال للقسم
+        if(isset($_GET['iscat'])){
+
+          if($_GET['iscat'] == true){
+            $additional_data = array('c'=>$_GET['cat']);
+
+          }
+
+
+
+        }
+
+
+        // ارسال للشركة
+
+         if(isset($_GET['isManufacturer'])){
+
+           if($_GET['isManufacturer'] == true){
+             $additional_data = array('m'=>$_GET['manufacturer']);
+
+           }
+
+        }
+
+
+         // ارسال المنتج
+
+         if(isset($_GET['isProduct'])){
+           if($_GET['isProduct'] == true){
+             $additional_data = array('p'=>$_GET['id']);
+
+           }
+        }
+
+
+
+
+
+
 
 
         $this->load->model('setting/setting');
@@ -208,6 +280,10 @@ class ControllerExtensionModuleNotificationOnesignal extends Controller
             'chrome_web_image' => $ImageUrl,
             "ios_sound" => $sound,
             'contents' => $content,
+            'data' => $additional_data
+
+
+
         ];
 
         if ($_GET['active_url'] == "true") {

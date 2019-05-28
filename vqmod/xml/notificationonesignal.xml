@@ -1,7 +1,7 @@
 <modification>
 
     <id>Notification onesignal</id>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <vqmver>2.1.1</vqmver>
     <author>BasheirHassan</author>
 
@@ -31,8 +31,21 @@
             <add><![CDATA[
 
             <script type="text/javascript">
-
 function sendAllNotificationonesignal() {
+
+    var obj = $("input[name='selected[]']:checked:enabled");
+
+
+
+
+
+
+    if (obj.length < 1) {
+        alert('is not Checked');
+
+        return;
+    }
+
 
     var dialog = bootbox.dialog({
         title: 'ارسال اشعار ',
@@ -41,6 +54,11 @@ function sendAllNotificationonesignal() {
             '<input id="imgUrl" class="bootbox-input bootbox-input-email form-control"  type="text"><br/>' +
             '<input id="ID" class="bootbox-input bootbox-input-email form-control"  type="text"> <br/>' +
             '<select name="segment" id="segment"></select> اختيار المجموعة <br/>' +
+
+            '<input class="sel" type="checkbox" name="iscat" id="iscat" value="true"> To Category -> <select name="cat" id="cat"></select><br/>' +
+            '<input class="sel" type="checkbox" name="isManufacturer" id="isManufacturer" value="true"> To toManufacturer -> <select name="manufacturer" id="manufacturer"></select><br/>' +
+            '<input class="sel" type="checkbox" name="isProduct" id="isProduct" value="true"> To Product<br/>' +
+
             '<input type="checkbox" name="sound" id="sound" value="true">ارسال التنبيه بدون صوت <br>' +
             '<input type="checkbox" name="active_url" id="active_url" value="true" >تفعيل رابط المنتج<br>',
 
@@ -69,13 +87,44 @@ function sendAllNotificationonesignal() {
                     }
 
 
+
+                     var iscat = ""
+                    if ($("#iscat").is(':checked')) {
+                        iscat = true;
+
+
+                    }
+
+                     var isManufacturer = ""
+                    if ($("#isManufacturer").is(':checked')) {
+                        isManufacturer = true;
+
+                    }
+
+                     var isProduct = ""
+                    if ($("#isProduct").is(':checked')) {
+                        isProduct = true;
+
+                    }
+
+
+
+
+
+
+
                     $.getJSON("index.php?route=extension/module/notificationonesignal/send&user_token={{user_token}}", {
                         name: $("#text").val(),
                         imgUrl: $("#imgUrl").val(),
                         id: $("#ID").val(),
                         segment: $("#segment").val(),
                         active_url: active_url,
-                        sound: sound
+                        sound: sound,
+                        iscat:iscat,
+                        isManufacturer:isManufacturer,
+                        isProduct:isProduct,
+                        cat:$("#cat").val(),
+                        manufacturer:$("#manufacturer").val()
                     })
                         .done(function (data) {
 
@@ -95,8 +144,6 @@ function sendAllNotificationonesignal() {
         }
     });
 
-
-    var obj = $("input[name='selected[]']:checked:enabled");
 
     $.ajax({
         url: 'index.php?route=extension/module/notificationonesignal/getProduct&user_token={{user_token}}',
@@ -120,7 +167,56 @@ function sendAllNotificationonesignal() {
     });
 
 
+
+    $.getJSON( "index.php?route=extension/module/notificationonesignal/getSection&user_token={{user_token}}", function( data ) {
+
+
+        $("#cat").append("<option value=''></option>" );
+
+        $.each( data, function( key, val ) {
+            $("#cat").append("<option value='" + val.category_id + "'>" + val.name + "</option>" );
+        });
+
+        $("#cat").change(function() {
+            $("#cat").val();
+            $("#idCat").val( "c="+ $("#cat").val());
+
+        });
+
+
+
+    });
+
+
+
+
+$.getJSON( "index.php?route=extension/module/notificationonesignal/getManufacturers&user_token={{user_token}}", function( data ) {
+
+
+        $("#manufacturer").append("<option value=''></option>" );
+
+        $.each( data, function( key, val ) {
+            $("#manufacturer").append("<option value='" + val.manufacturer_id + "'>" + val.name + "</option>" );
+        });
+
+    });
+
+
+
+   $('.sel').click(function() {
+                        $('.sel').not(this).prop('checked', false);
+                        $(this).prop('checked', true);
+      });
+
+
 }
+
+
+
+
+
+
+
 
 </script>
 
