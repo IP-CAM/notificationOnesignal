@@ -201,6 +201,12 @@ public function getManufacturers(){
         return $setting['notificationonesignal_name_segment'];
     }
 
+
+
+
+
+
+    // Send noty
     function sendMessage(){
 
 

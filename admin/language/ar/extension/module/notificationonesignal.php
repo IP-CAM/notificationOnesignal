@@ -1,7 +1,7 @@
 <?php
 
 
-$_['text_Version']    		= '1.3.0';
+$_['text_Version']    		= '1.3.2';
 
 // Heading
 $_['heading_title']    		= 'Notification Onesignal';
