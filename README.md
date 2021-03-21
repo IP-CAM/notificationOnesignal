@@ -1,19 +1,11 @@
-# notification Onesignal
+Help this add to the OpenCard store
 
-تساعد هذه الاضافة لمتجر اوبن كارد
-
-بارسال الاشعارات الى موقع
+Send notices to 
 https://onesignal.com/
-#
-بعد انشاء الحساب على الموقع وربط بيانات التطبيق
-بالاضافة تسطيع الارسال من دااخل متجر اوبن كارت الى المستخدمين
 
+After creating an account on the site and linking the application data as 
+well as the transmitter from the continuation store of the shop of the shop to users
 
-بعد اختيار المنتج
-
-ومن ثم ارسال
-
-
-
-
-حرية الاستخدام #مطلقة
+After choosing the product
+And then send
+Free use # absolute 
